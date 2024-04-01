@@ -1,17 +1,19 @@
-import './Cell.css';
 
 interface CellProps {
   alive: boolean;
+  size: number;
 }
 
-function Cell({ alive } : CellProps) {
+function Cell({ alive, size } : CellProps) {
 
   const style = { 
-    backgroundColor: alive ? 'black' : 'white' 
+    backgroundColor: alive ? 'black' : 'white',
+    width: size,
+    height: size
   };
 
   return (
-    <div className="Cell" style={style}>
+    <div style={style}>
     </div>
   );
 }

@@ -15,6 +15,25 @@ class GameOfLife {
     this.grid = this.grid.map(row => row.map(() => Math.random() > 0.333));
   }
 
+  public resize(rows: number, cols: number) {
+    if (rows === this.rows && cols === this.cols) {
+      return;
+    }
+
+    const oldGrid = this.grid;
+    const newGrid = Array(rows).fill(null).map(() => Array(cols).fill(false));
+
+    for (let i = 0; i < Math.min(rows, this.rows); i++) {
+      for (let j = 0; j < Math.min(cols, this.cols); j++) {
+        newGrid[i][j] = oldGrid[i][j];
+      }
+    }
+
+    this.rows = rows;
+    this.cols = cols;
+    this.grid = newGrid;
+  }
+
   public step(tick: number) {
     console.log(`Step ${tick}`);
 
